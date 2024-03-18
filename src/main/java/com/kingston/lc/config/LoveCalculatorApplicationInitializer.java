@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -14,8 +15,8 @@ public class LoveCalculatorApplicationInitializer implements WebApplicationIniti
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		System.out.println("My custom class onstartup method called>>>>jerun");
 
-		XmlWebApplicationContext webApplicationContext = new XmlWebApplicationContext();
-		webApplicationContext.setConfigLocation("classpath:application-config.xml");
+		AnnotationConfigWebApplicationContext webApplicationContext= new AnnotationConfigWebApplicationContext();
+		webApplicationContext.register(LoveCalculatorAppConfig.class);
 
 		// Create a dispatcher servlet object
 
